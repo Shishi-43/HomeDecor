@@ -13,7 +13,7 @@ import vaseImg2 from '../Photos/vase2.jpg'
 import chairImg2 from '../Photos/loungeChair2.jpg'
 import sculptureImg2 from '../Photos/sculpture2.jpg'
 
-import heroImg from '../Photos/hero.avif'
+import heroImg from '../Photos/hero.jpg'
 import editImg from '../Photos/editorial.avif'
 import editImg2 from '../Photos/editorial2.avif'
 import atelierImg from '../Photos/atelier.avif'
