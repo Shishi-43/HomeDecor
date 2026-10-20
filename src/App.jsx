@@ -180,6 +180,7 @@ function ProductPageRoute() {
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 <span className="absolute top-4 left-4 text-[10px] uppercase tracking-luxe text-cream/90 bg-ebony/50 backdrop-blur-sm px-2.5 py-1">
                   {product.category}

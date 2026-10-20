@@ -11,6 +11,7 @@ export default function Atelier() {
             src={atelierImg}
             alt="Atelier"
             className="w-full aspect-[5/4] object-cover shadow-soft"
+            loading="lazy"
           />
         </div>
         <div className="md:col-span-5 order-1 md:order-2">

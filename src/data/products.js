@@ -1,23 +1,3 @@
-import curtainImg from '../Photos/curtain.jpg'
-import furnitureImg from '../Photos/sofa.jpg'
-import ledlightImg from '../Photos/ledlight.jpg'
-import chandelierImg from '../Photos/chandelier.jpg'
-import vaseImg from '../Photos/vase.jpg'
-import chairImg from '../Photos/loungeChair.jpg'
-import sculptureImg from '../Photos/sculpture.jpg'
-
-import curtainImg2 from '../Photos/curtain2.jpg'
-import furnitureImg2 from '../Photos/sofa2.jpg'
-import chandelierImg2 from '../Photos/chandelier2.jpg'
-import vaseImg2 from '../Photos/vase2.jpg'
-import chairImg2 from '../Photos/loungeChair2.jpg'
-import sculptureImg2 from '../Photos/sculpture2.jpg'
-
-import heroImg from '../Photos/hero.jpg'
-import editImg from '../Photos/editorial.avif'
-import editImg2 from '../Photos/editorial2.avif'
-import atelierImg from '../Photos/atelier.avif'
-
 export const PHONE = '233559056144';
 
 export const CATEGORIES = [
@@ -41,7 +21,7 @@ export const PRODUCTS = [
     description:
       'Floor-to-ceiling drapery tailored from triple-weight Italian velvet. Engineered to filter light into a warm, golden hush — the kind of glow that turns an ordinary afternoon into a memory.',
     materials: ['Italian Velvet', 'Brass Hardware', 'Blackout Lining'],
-    image: curtainImg,
+    image: '/images/curtain.jpg',
   },
   {
     id: 'p02',
@@ -51,7 +31,7 @@ export const PRODUCTS = [
     description:
       'A low-slung lounge sofa carved from solid walnut and upholstered in vegetable-tanned saddle leather that deepens with every passing season.',
     materials: ['Solid Walnut', 'Saddle Leather', 'Goose-down Cushions'],
-    image: furnitureImg,
+    image: '/images/sofa.jpg',
   },
   {
     id: 'p03',
@@ -61,7 +41,7 @@ export const PRODUCTS = [
     description:
       'A whisper-thin LED ribbon designed for cove and shadow-gap installations. Casts a candlelit warmth that flatters every brown tone in the room.',
     materials: ['Anodized Aluminium', '2700K Diodes', 'Dimmable Driver'],
-    image: ledlightImg,
+    image: '/images/ledlight.jpg',
   },
   {
     id: 'p04',
@@ -71,7 +51,7 @@ export const PRODUCTS = [
     description:
       'Twenty-four hand-blown smoked-glass globes suspended from an aged-bronze armature. A modern heirloom designed to anchor a dining room or grand foyer.',
     materials: ['Aged Bronze', 'Smoked Glass', 'Silk-wrapped Cable'],
-    image: chandelierImg,
+    image: '/images/chandelier.jpg',
   },
   {
     id: 'p05',
@@ -81,7 +61,7 @@ export const PRODUCTS = [
     description:
       'A monolithic vessel wheel-thrown by a single artisan in Tuscany. Its matte terracotta surface absorbs light the way old leather absorbs the sun.',
     materials: ['Terracotta', 'Mineral Glaze'],
-    image: vaseImg,
+    image: '/images/vase.jpg',
   },
   {
     id: 'p06',
@@ -91,7 +71,7 @@ export const PRODUCTS = [
     description:
       'A sculpted reading chair wrapped in heavyweight bouclé. The silhouette is pure 1970s Milan; the comfort is engineered for an entire chapter.',
     materials: ['Steam-bent Oak', 'Wool Bouclé', 'High-resilience Foam'],
-    image: chairImg,
+    image: '/images/loungeChair.jpg',
   },
   {
     id: 'p07',
@@ -101,7 +81,7 @@ export const PRODUCTS = [
     description:
       'A limited-edition bronze, lost-wax cast and finished by hand with a deep umber patina. Numbered and signed by the studio.',
     materials: ['Patinated Bronze', 'Travertine Base'],
-    image: sculptureImg,
+    image: '/images/sculpture.jpg',
   },
   {
     id: 'p08',
@@ -111,7 +91,7 @@ export const PRODUCTS = [
     description:
       'Stonewashed Belgian linen sheers that diffuse afternoon light into soft, biscuit-warm tones. Sold by the panel, made to measure.',
     materials: ['Belgian Linen', 'Brass Eyelets'],
-    image: curtainImg2,
+    image: '/images/curtain2.jpg',
   },
   {
     id: 'p09',
@@ -121,7 +101,7 @@ export const PRODUCTS = [
     description:
       'A single block of travertine, gently honed and washed with espresso pigment. A quiet centerpiece for the living room.',
     materials: ['Travertine', 'Mineral Wash'],
-    image: furnitureImg2,
+    image: '/images/sofa2.jpg',
   },
   {
     id: 'p10',
@@ -131,7 +111,7 @@ export const PRODUCTS = [
     description:
       'A single floating halo of brushed brass cradling an alabaster diffuser. Modern, monastic, magnificent.',
     materials: ['Brushed Brass', 'Italian Alabaster'],
-    image: chandelierImg2,
+    image: '/images/chandelier2.jpg',
   },
   {
     id: 'p11',
@@ -141,7 +121,7 @@ export const PRODUCTS = [
     description:
       'A curvilinear vessel finished in a deep espresso glaze that pools at the base like a slow river.',
     materials: ['Stoneware', 'Reactive Glaze'],
-    image: vaseImg2,
+    image: '/images/vase2.jpg',
   },
   {
     id: 'p12',
@@ -151,7 +131,7 @@ export const PRODUCTS = [
     description:
       'A swiveling cocoon of aniline cognac leather mounted on a cast-bronze base. Built for slow Sundays.',
     materials: ['Aniline Leather', 'Cast Bronze', 'Kiln-dried Beech'],
-    image: chairImg2,
+    image: '/images/loungeChair2.jpg',
   },
 ];
 
@@ -165,4 +145,7 @@ export const buildSMS = (productName) =>
     `I'm interested in ${productName}.`
   )}`;
 
-export { heroImg, editImg, editImg2, atelierImg };
+export const heroImg = '/images/hero.jpg';
+export const editImg = '/images/editorial.avif';
+export const editImg2 = '/images/editorial2.avif';
+export const atelierImg = '/images/atelier.avif';

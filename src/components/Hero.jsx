@@ -10,6 +10,7 @@ export default function Hero({ onShop }) {
           src={heroImg}
           alt="Luxury minimalist brown interior"
           className="w-full h-full object-cover"
+          fetchPriority="high"
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-ebony/60 via-ebony/30 to-ebony/80" />

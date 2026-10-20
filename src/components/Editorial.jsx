@@ -32,11 +32,13 @@ export default function Editorial() {
             src={editImg}
             alt="Brown minimalist interior"
             className="aspect-[3/4] object-cover w-full rounded-sm shadow-soft"
+            loading="lazy"
           />
           <img
             src={editImg2}
             alt="Warm interior detail"
             className="aspect-[3/4] object-cover w-full rounded-sm shadow-soft mt-10"
+            loading="lazy"
           />
         </div>
       </div>
