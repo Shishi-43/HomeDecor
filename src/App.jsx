@@ -18,7 +18,7 @@ import {
   Star,
 } from 'lucide-react';
 
-import { CATEGORIES, PRODUCTS, buildWhatsApp, buildSMS, PHONE } from './data/products';
+import { CATEGORIES, buildWhatsApp, buildSMS, PHONE } from './data/products';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -47,17 +47,40 @@ function HomePage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [query, setQuery] = useState('');
   const [navOpen, setNavOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch('/api/products');
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProducts();
+  }, []);
+
   const filtered = useMemo(() => {
-    return PRODUCTS.filter(
+    return products.filter(
       (p) =>
         (activeCategory === 'All' || p.category === activeCategory) &&
         (query.trim() === '' ||
           p.name.toLowerCase().includes(query.toLowerCase()) ||
           p.category.toLowerCase().includes(query.toLowerCase()))
     );
-  }, [activeCategory, query]);
+  }, [activeCategory, query, products]);
 
   return (
     <>
@@ -66,7 +89,25 @@ function HomePage() {
         <meta name="description" content="Maison Brun offers luxury home decor and bespoke furniture in Accra, Ghana, featuring curated atelier pieces in warm brown tones." />
       </Helmet>
       <div className="min-h-screen bg-ivory text-ebony">
-        <Header
+        {loading && (
+          <div className="flex items-center justify-center min-h-screen">
+            <p className="text-chocolate">Loading...</p>
+          </div>
+        )}
+        {error && (
+          <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+            <p className="text-chocolate">Error: {error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 bg-ebony text-cream text-xs uppercase tracking-luxe hover:bg-chocolate transition"
+            >
+              Retry
+            </button>
+          </div>
+        )}
+        {!loading && !error && (
+          <>
+            <Header
           onHome={() => navigate('/')}
           navOpen={navOpen}
           setNavOpen={setNavOpen}
@@ -106,6 +147,8 @@ function HomePage() {
         <Testimonials />
         <Newsletter />
         <Footer />
+          </>
+        )}
       </div>
     </>
   );
@@ -117,10 +160,57 @@ function ProductPageRoute() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [navOpen, setNavOpen] = useState(false);
+  const [product, setProduct] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const product = PRODUCTS.find((p) => p.id === id);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const [productRes, productsRes] = await Promise.all([
+          fetch(`/api/product?id=${id}`),
+          fetch('/api/products')
+        ]);
 
-  if (!product) {
+        if (!productsRes.ok) {
+          throw new Error('Failed to fetch products');
+        }
+
+        const productsData = await productsRes.json();
+        setAllProducts(productsData);
+
+        if (!productRes.ok) {
+          if (productRes.status === 404) {
+            setProduct(null);
+          } else {
+            throw new Error('Failed to fetch product');
+          }
+        } else {
+          const productData = await productRes.json();
+          setProduct(productData);
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-ivory">
+        <p className="text-chocolate">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error || !product) {
     return (
       <>
         <Helmet>
@@ -138,7 +228,7 @@ function ProductPageRoute() {
     );
   }
 
-  const related = PRODUCTS.filter(
+  const related = allProducts.filter(
     (p) => p.category === product.category && p.id !== product.id
   ).slice(0, 3);
 

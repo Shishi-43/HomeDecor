@@ -1,0 +1,15 @@
+---
+trigger: always_on
+---
+
+# Maison Brun
+Stack: React + Vite + Tailwind + lucide-react, deployed on Vercel. Backend routes are Vercel serverless functions in /api.
+Brand: luxury, brown palette. Do not change colors, fonts, or layout unless asked.
+
+Rules:
+- Make only the change requested. Do not refactor unrelated code.
+- Never read, print, or quote the contents of any .env* file. Refer to environment variables by name only.
+- Never put API keys or secrets in client code or in files that are committed to Git.
+- Never invent business facts (testimonials, prices, policies, delivery claims). Leave a clearly marked TODO instead.
+- After each task, run `npm run build` and fix any errors before finishing.
+- Keep components small, one per file in src/components/.
