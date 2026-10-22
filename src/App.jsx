@@ -384,20 +384,22 @@ function ProductPageRoute() {
 
           {/* Related */}
           {related.length > 0 && (
-            <section className="mt-24">
-              <h2 className="font-serif text-3xl mb-10">
-                From the same <em className="text-espresso">collection</em>.
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-                {related.map((p, i) => (
-                  <ProductCard
-                    key={p.id}
-                    product={p}
-                    index={i}
-                  />
-                ))}
-              </div>
-            </section>
+            <div className="max-w-7xl mx-auto px-5 md:px-10 mt-24">
+              <section>
+                <h2 className="font-serif text-3xl mb-10">
+                  From the same <em className="text-espresso">collection</em>.
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+                  {related.map((p, i) => (
+                    <ProductCard
+                      key={p.id}
+                      product={p}
+                      index={i}
+                    />
+                  ))}
+                </div>
+              </section>
+            </div>
           )}
         
         </article>  
